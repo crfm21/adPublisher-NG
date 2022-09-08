@@ -1,0 +1,57 @@
+<div class="container p-5">
+  <h1>Todos os anúncios</h1>
+  <div class="row mt-3 mb-3">
+    <div class="col-4">
+      <table class="table table-bordered justify-content-center">
+        <tr>
+          <th>
+            Imóveis
+            <span class="badge badge-light">{{ imoAds.length }}</span>
+          </th>
+        </tr>
+        <tr class="col-2" *ngFor="let ad of imoAds">
+          <td class="text-align-center">
+            <a [routerLink]="['classificado/' + ad.id]" (click)="sendAd(ad.id)">
+              {{ ad.subject }}
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <table class="table table-bordered justify-content-center">
+        <tr>
+          <th>
+            Automóveis
+            <span class="badge badge-light">{{ autoAds.length }}</span>
+          </th>
+        </tr>
+        <tr class="col-2" *ngFor="let ad of autoAds">
+          <td class="text-align-center">
+            <a [routerLink]="['classificado/' + ad.id]" (click)="sendAd(ad.id)">
+              {{ ad.subject }}
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <table class="table table-bordered justify-content-center">
+        <tr>
+          <th>
+            Empregos
+            <span class="badge badge-light">{{ jobAds.length }}</span>
+          </th>
+        </tr>
+        <tr class="col-2" *ngFor="let ad of jobAds">
+          <td class="text-align-center">
+            <a [routerLink]="['classificado/' + ad.id]" (click)="sendAd(ad.id)">
+              {{ ad.subject }}
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

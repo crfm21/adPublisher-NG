@@ -1,0 +1,19 @@
+<div class="row justify-content-center">
+  <div class="card text-center m-3" style="width: 100%">
+    <div class="card-header">{{ ad.subject }}</div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <p class="card-text">
+        {{ ad.description }}
+      </p>
+    </div>
+    <div class="card-footer text-muted text-right">
+      <div class="row justify-content-between">
+        <div>
+          {{ ad.creationDate | date: "MMM d, y" }}
+        </div>
+        <div>Contacto: {{ ad.contact }}</div>
+      </div>
+    </div>
+  </div>
+</div>

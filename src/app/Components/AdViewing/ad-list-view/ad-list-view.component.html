@@ -1,0 +1,23 @@
+<div class="container p-5">
+  <h3>{{ type }} em destaque</h3>
+
+  <div class="column m-b5" *ngIf="ads.length !== null; else noAds">
+    <div class="m-5">
+      <ul class="list-group" *ngFor="let ad of ads">
+        <a
+          class="list-group-item list-group-item-action"
+          [routerLink]="[ad.id]"
+          (click)="sendSpecificAd(ad.id)"
+          >{{ ad.subject }}</a
+        >
+      </ul>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <ng-template #noAds>
+    <h2>Não existem anúncios de {{ type }}.</h2>
+  </ng-template>
+</div>
+<!-- ver problema com o refresh de pagina -->

@@ -1,0 +1,128 @@
+<div class="container p-5">
+  <h2>Publicar um anúncio</h2>
+
+  <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-md-8 mb-2">
+          <label for="subject">Assunto: </label>
+          <input
+            type="text"
+            formControlName="subject"
+            id="subject"
+            class="form-control"
+          />
+          <div
+            *ngIf="f['subject'].touched && f['subject'].invalid"
+            class="alert alert-danger"
+          >
+            <div *ngIf="f['subject'].errors && f['subject'].errors['required']">
+              O assunto do anúncio é obrigatório.
+            </div>
+            <div
+              *ngIf="f['subject'].errors && f['subject'].errors['maxlength']"
+            >
+              O assunto do anúncio não deve ultrapassar os 50 carateres.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-2">
+          <label for="adType">Tipo de anúncio: </label>
+          <select
+            class="custom-select"
+            formControlName="adType"
+            id="gender"
+            required
+          >
+            <option selected disabled value="">Select a gender</option>
+            <option *ngFor="let type of types; let i = index" [ngValue]="i">
+              {{ type }}
+            </option>
+          </select>
+          <div
+            *ngIf="f['adType'].touched && f['adType'].invalid"
+            class="alert alert-danger"
+          >
+            <div *ngIf="f['adType'].errors && f['adType'].errors['required']">
+              Escolha o tipo do anúncio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-12 mb-2">
+          <label for="description">Descrição: </label>
+          <textarea
+            type="text"
+            formControlName="description"
+            id="description"
+            class="form-control"
+            placeholder="Descrição clara e sucinta"
+          ></textarea>
+          <div
+            *ngIf="f['description'].touched && f['description'].invalid"
+            class="alert alert-danger"
+          >
+            <div
+              *ngIf="
+                f['description'].errors && f['description'].errors['required']
+              "
+            >
+              A descrição do anúncio é obrigatória.
+            </div>
+            <div
+              *ngIf="
+                f['description'].errors && f['description'].errors['maxlength']
+              "
+            >
+              O texto não pode ser superior a 400 carateres.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-6 mb-2">
+          <label for="contact">Contacto: </label>
+          <input
+            type="text"
+            formControlName="contact"
+            id="contact"
+            class="form-control"
+            placeholder="Tel, e-mail ..."
+          />
+          <div
+            *ngIf="f['contact'].touched && f['contact'].invalid"
+            class="alert alert-danger"
+          >
+            <div *ngIf="f['contact'].errors && f['contact'].errors['required']">
+              Insira pelo menos um contacto.
+            </div>
+            <div
+              *ngIf="f['contact'].errors && f['contact'].errors['maxlength']"
+            >
+              O contacto não pode ter mais que 50 carateres.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row justify-content-end">
+        <button
+          type="submit"
+          class="btn mr-2 btn-outline-primary"
+          [disabled]="!form.valid"
+        >
+          Publicar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
